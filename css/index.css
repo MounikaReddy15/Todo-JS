@@ -1,0 +1,52 @@
+
+
+#main-container {
+    position: relative;
+    margin: auto;
+    margin-top: 10%;
+    height: 400px;
+    width: 50%;
+    background-color: rgb(215, 221, 223);
+}
+#task-container {
+    position: absolute;
+    left: 4.5%;
+    top: 10%;
+    height: 80%;
+    width: 90%;
+    border-radius: 4%;
+    background-color: rgb(243, 236, 236);
+    border: 4px solid grey;
+   
+}
+
+#task-bar {
+     height: 18%;
+     width: 70%;
+     margin-left: 4%;
+     margin-top: 4%;
+     background-color: lightseagreen;
+     border: none;
+     border-radius: 4%;
+     font-size: 2rem;
+     padding-left: 2%;
+}
+
+#add-btn {
+    height: 13.5%;
+    width: 15%;
+    margin-left: 4%;
+    background-color: lightsalmon;
+    border: none;
+    
+    border-radius: 6%;
+}
+
+#list-container {
+    margin-left: 3%;
+    margin-top: 2%;
+}
+
+span {
+    padding-left: 1%;
+}
