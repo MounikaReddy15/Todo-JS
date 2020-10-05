@@ -3,6 +3,8 @@
 const addButton  = document.getElementById('add-btn');
 const todo = document.getElementById('task-bar');
 const listDisplay = document.getElementById('list-container');
+const localContent = localStorage.getItem('task');
+var results = JSON.parse(localContent);
 
 let task = localStorage.getItem('task')
   ? JSON.parse(localStorage.getItem('task'))
@@ -18,8 +20,16 @@ const storeTasks = (todos) => {
     // displayTasks();
 }
 
-const localContent = localStorage.getItem('task');
-var results = JSON.parse(localContent);
+const removeTask = (text) => {
+  console.log(text);
+  const index = results.indexOf(text);
+  console.log(index);
+  results.splice(index,1);
+  console.log(results);
+  localStorage.setItem('task', JSON.stringify(results));
+  window.location.reload();
+}
+
 
 const liMaker = (text) => {
    
@@ -30,7 +40,7 @@ const liMaker = (text) => {
    
     li.innerHTML += `
      
-    <span> <button onclick = "removeTask('${text}')"> Delete </button> </span>`
+    <span> <button id= "delete-btn"onclick = "removeTask('${text}')"> Delete </button> </span>`
     listDisplay.appendChild(li)
     
 }
