@@ -11,15 +11,15 @@ let task = localStorage.getItem('task')
   : []
 
 const storeTasks = (todos) => {
-    
+    if(todos) {
     location.reload();
     task.push(todos);
-    // console.log(task);
+    
     localStorage.setItem("task", JSON.stringify(task));
     
-    // displayTasks();
+    
 }
-
+}
 const removeTask = (text) => {
   console.log(text);
   const index = results.indexOf(text);
@@ -30,19 +30,19 @@ const removeTask = (text) => {
   window.location.reload();
 }
 
-
+var id=0;
 const liMaker = (text) => {
    
     const li = document.createElement('li');
-    li.innerHTML = `<input type="radio" >  &nbsp;&nbsp;`;
+    li.innerHTML = `<input class= "radioBtn" onclick = "check(id)" job="complete" type="checkbox" id= '${id}' >  &nbsp;&nbsp;`;
+    
     li.innerHTML += text;
-    // console.log(results.indexOf(text));
    
     li.innerHTML += `
      
     <span> <button id= "delete-btn"onclick = "removeTask('${text}')"> Delete </button> </span>`
     listDisplay.appendChild(li)
-    
+    id++;
 }
 
  const displayTasks = () => {
@@ -54,9 +54,19 @@ const liMaker = (text) => {
  });
  }
 
-
-
-
+const check = (id) => {
+  if(task[id].includes(`<strike>`)) {
+    task[id] = task[id].replace("<strike>", "");
+    task[id] = task[id].replace("</strike>", "");
+  }
+  else {
+    task[id]= `<strike>  ${task[id]}  </strike>`;
+  }
+  
+    localStorage.setItem("task", JSON.stringify(task));
+  
+}
 
 addButton.addEventListener('click', () => storeTasks(todo.value));
 displayTasks();
+
